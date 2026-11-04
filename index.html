@@ -299,9 +299,7 @@ button:active{
 
 <h1>❤️ hello 小公主 ❤️</h1>
 
-<h2 id="daysCounter">
-1089 天前(大摡2023/11/8)，我們的故事開始了 ❤️
-</h2>
+<h2 id="daysCounter"></h2>
 
 <img
 id="slide"
@@ -441,22 +439,38 @@ function startHeartFirework(event){
 
 }
 /* 開信 */
-
 function openLetter(event){
 
     startHeartFirework(event);
 
-    const intro =
-    document.createElement("div");
-
+    const intro = document.createElement("div");
     intro.id = "introStory";
 
+    const startDate = new Date("2023-11-08");
+    const today = new Date();
+
+    const diffTime = today - startDate;
+    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
     intro.innerHTML = `
-    1089 天前<br>
+    ${days} 天前<br>
     我們的故事開始了 ❤️
     `;
 
     document.body.appendChild(intro);
+
+    /* 文字淡入 */
+    setTimeout(() => {
+        intro.style.opacity = "1";
+    }, 1500);
+
+    /* 主畫面提前準備 */
+    setTimeout(() => {
+        document.getElementById("home").style.opacity = "0";
+    }, 3500);
+
+    // 後面原本的程式照舊...
+
 
     /* 文字淡入 */
 
@@ -507,7 +521,11 @@ function openLetter(event){
 }
 
 /* 打字機效果 */
+const startDate = new Date("2023-11-08");
+const today = new Date();
 
+const diffTime = today - startDate;
+const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 const text = `
 
 不知道從什麼時候開始。
@@ -522,7 +540,7 @@ const text = `
 
 謝謝你出現在我的生活裡。
 
-1089 天前，
+${days} 天前，
 
 我們從日文社認識了。
 
@@ -788,39 +806,42 @@ function checkChoice(){
 
     if(this.innerHTML.includes("K阿")){
 
-        document.body.innerHTML = `
+        const startDate = new Date("2023-11-08");
+const today = new Date();
 
-        <div style="
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        flex-direction:column;
-        background:linear-gradient(
-        135deg,
-        #ffd1dc,
-        #ffc0cb
-        );
-        font-family:Microsoft JhengHei;
-        ">
+const diffTime = today - startDate;
+const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-        <h1 style="color:#ff4d6d;">
-        ❤️ 陳芊卉 ❤️
-        </h1>
+document.body.innerHTML = `
+<div style="
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(
+135deg,
+#ffd1dc,
+#ffc0cb
+);
+font-family:Microsoft JhengHei;
+">
 
-        <h2>
-        希望以後的每一天，
-        都有妳陪我。
-        </h2>
+<h1 style="color:#ff4d6d;">
+❤️ 陳芊卉 ❤️
+</h1>
 
-        <p>
-        1089 天的故事還沒結束 ❤️
-        </p>
+<h2>
+希望以後的每一天，
+都有妳陪我。
+</h2>
 
-        </div>
+<p>
+${days} 天的故事還沒結束 ❤️
+</p>
 
-        `;
-
+</div>
+`;
     }else{
 
         const temp = yesBtn.innerHTML;
@@ -832,7 +853,18 @@ function checkChoice(){
     }
 
 }
+function updateDaysCounter() {
+    const startDate = new Date("2023-11-08");
+    const today = new Date();
 
+    const diffTime = today - startDate;
+    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    document.getElementById("daysCounter").innerHTML =
+    `自 2023/11/08 起，我們已經一起走過 ${days} 天了 ❤️`;
+}
+
+updateDaysCounter();
 </script>
 
 </body>
