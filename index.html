@@ -497,6 +497,44 @@ function startHeartFirework(event){
     },1000);
 
 }
+
+let savedEvent;
+
+function startCatIntro(event){
+
+    savedEvent = event;
+
+    document.getElementById("home").style.display="none";
+
+    document.getElementById("catIntro").style.display="flex";
+
+    const cat = document.getElementById("catImage");
+    const heart = document.getElementById("heartEye");
+
+    setTimeout(()=>{
+        cat.classList.add("zoomEye");
+    },500);
+
+    setTimeout(()=>{
+        cat.classList.add("blink");
+    },3000);
+
+    setTimeout(()=>{
+        cat.classList.remove("blink");
+    },3500);
+
+    setTimeout(()=>{
+        heart.style.opacity="1";
+    },4500);
+
+    setTimeout(()=>{
+        document.getElementById("catIntro").remove();
+
+        openLetter(savedEvent);
+
+    },6000);
+}
+
 /* 開信 */
 function openLetter(event){
 
