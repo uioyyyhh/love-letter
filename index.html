@@ -12,6 +12,49 @@
 <meta property="og:image" content="https://uiuoyyyhh.github.io/love-letter/images/photo15.jpeg">
 <meta property="og:url" content="https://uiuoyyyhh.github.io/love-letter/">
 <meta property="og:type" content="website">
+#catIntro{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100000;
+    overflow:hidden;
+}
+
+#catImage{
+    width:300px;
+    transition:all 4s ease;
+}
+
+.zoomEye{
+    transform:scale(4);
+}
+
+.blink{
+    filter:brightness(0.3);
+}
+
+.heartEye{
+    position:absolute;
+    color:red;
+    font-size:80px;
+    opacity:0;
+    animation:heartPop 1s forwards;
+}
+
+@keyframes heartPop{
+    from{
+        opacity:0;
+        transform:scale(0);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
 <style>
 
 body{
@@ -280,7 +323,19 @@ button:active{
 </head>
 
 <body>
+<div id="catIntro">
 
+    <img
+    id="catImage"
+    src="cat.jpg">
+
+    <div
+    id="heartEye"
+    class="heartEye">
+    ❤️
+    </div>
+
+</div>
 <div id="fireworkContainer"></div>
 
 <div id="home">
@@ -291,7 +346,7 @@ button:active{
 ㄆㄐㄐ有些話想對你說...
 </p>
 
-<button onclick="openLetter(event)">
+<button onclick="startCatIntro(event)">
 📩 打開信件
 </button>
 
